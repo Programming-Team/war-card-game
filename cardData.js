@@ -9,12 +9,11 @@ function createDeck(){
     
     for(var i = 0; i < 4; i++){
         for(var a = 1; a < 14; a++){
-            card = {};
+            var card = {};
             card.suit = i;
             card.value = a;
             card.img = "cardimages/" + a + "-" + card.suit + ".png";
             card.back = "back-blue-75-3.png";
-            card.addEventListener(“click”, function(){returnCard(this);});
             cardDeck.push(card);
         }
     }
@@ -32,15 +31,14 @@ function dealCard(deck){
     myCard = document.createElement("img");
     myCard.src = newCard.img;
     document.getElementById("table").appendChild(myCard);
-    
-    return deck.splice(0,1)[0];
-    
+    myCard.addEventListener("click", function(){returnCard(this);});
 }   
 function shuffle(){
 
 }
 
 function returnCard(placedCard){
-    
+    document.getElementById("table").removeChild(placedCard);
+    cardDeck.push(placedCard);
 
 }
