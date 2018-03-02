@@ -1,0 +1,7 @@
+function shuffle(){
+
+}
+
+function drawCard(){
+    
+}
