@@ -2,6 +2,7 @@ CLUBS = 0;
 DIAMONDS = 1;
 HEARTS = 2;
 SPADES = 3;
+cardsDealt = 0;
 
 
 function createDeck(){
@@ -32,13 +33,16 @@ function dealCard(deck){
     myCard.src = newCard.img;
     document.getElementById("table").appendChild(myCard);
     myCard.addEventListener("click", function(){returnCard(this);});
+    cardsDealt++;
 }   
 function shuffle(){
 
 }
 
 function returnCard(placedCard){
-    document.getElementById("table").removeChild(placedCard);
-    cardDeck.push(placedCard);
-
+    if(cardsDealt <= cardDeck.length){
+        document.getElementById("table").removeChild(placedCard);
+        cardDeck.push(placedCard);
+        cardsDealt--;
+    } 
 }
