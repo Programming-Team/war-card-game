@@ -1,7 +1,0 @@
-function shuffle(){
-
-}
-
-function drawCard(){
-    
-}

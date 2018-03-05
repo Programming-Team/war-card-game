@@ -18,6 +18,7 @@ function createDeck(){
             cardDeck.push(card);
         }
     }
+    shuffle();
 }
 /*function display(){
     for(var i = 0; i < deck.length; i++){
@@ -37,7 +38,14 @@ function dealCard(deck){
     cardsDealt++;
 }   
 function shuffle(){
-
+    shuffledList = [];
+	for (var i = 0; i < 52; i++)
+	{
+		randomCard = getRandomInteger(0, 51 - i);
+		shuffledList.push(tempList[randomCard]);
+		tempList.slice(randomCard, 1);
+	}
+	tempList = cardList;
 }
 
 function returnCard(placedCard){
@@ -45,3 +53,7 @@ function returnCard(placedCard){
     cardDeck.push(placedCard);
     cardsDealt--;
 }
+
+function getRandomInteger(min, max) {
+	return Math.floor(Math.random() * (max-min + 1)) + min;
+} 
