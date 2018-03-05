@@ -2,6 +2,7 @@ CLUBS = 0;
 DIAMONDS = 1;
 HEARTS = 2;
 SPADES = 3;
+cardsDealt = 0;
 
 
 function createDeck(){
@@ -12,7 +13,7 @@ function createDeck(){
             var card = {};
             card.suit = i;
             card.value = a;
-            card.img = "cardimages/" + a + "-" + card.suit + ".png";
+            card.src = "cardimages/" + a + "-" + card.suit + ".png";
             card.back = "back-blue-75-3.png";
             cardDeck.push(card);
         }
@@ -29,9 +30,11 @@ function createDeck(){
 function dealCard(deck){
     newCard = cardDeck.shift();
     myCard = document.createElement("img");
-    myCard.src = newCard.img;
+    myCard.src = newCard.src;
+    
     document.getElementById("table").appendChild(myCard);
     myCard.addEventListener("click", function(){returnCard(this);});
+    cardsDealt++;
 }   
 function shuffle(){
 
@@ -40,5 +43,5 @@ function shuffle(){
 function returnCard(placedCard){
     document.getElementById("table").removeChild(placedCard);
     cardDeck.push(placedCard);
-
+    cardsDealt--;
 }
