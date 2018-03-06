@@ -36,16 +36,18 @@ function dealCard(deck){
     document.getElementById("table").appendChild(myCard);
     myCard.addEventListener("click", function(){returnCard(this);});
     cardsDealt++;
+
 }   
 function shuffle(){
     shuffledList = [];
+    tempList = cardDeck;
 	for (var i = 0; i < 52; i++)
 	{
-		randomCard = getRandomInteger(0, 51 - i);
+		var randomCard = getRandomInteger(0, (51 - i));
 		shuffledList.push(tempList[randomCard]);
 		tempList.slice(randomCard, 1);
-	}
-	tempList = cardList;
+    }
+    cardDeck = shuffledList;
 }
 
 function returnCard(placedCard){
