@@ -28,7 +28,7 @@ function createDeck(){
         myDiv.appendChild(myCard);
     }
 }*/
-function dealCard(deck){
+function dealCard(receiver){
     newCard = cardDeck.shift();
     myCard = document.createElement("img");
     myCard.src = newCard.src;
