@@ -19,6 +19,7 @@ function createDeck(){
         }
     }
     shuffle();
+    
 }
 /*function display(){
     for(var i = 0; i < deck.length; i++){
@@ -28,26 +29,34 @@ function createDeck(){
         myDiv.appendChild(myCard);
     }
 }*/
-function dealCard(receiver){
-    newCard = cardDeck.shift();
+function dealCard(Person){
+    newCard = Person.shift();
     myCard = document.createElement("img");
     myCard.src = newCard.src;
-    
-    document.getElementById("table").appendChild(myCard);
-    myCard.addEventListener("click", function(){returnCard(this);});
+    if(Person == playerHand){
+        document.getElementById("player_hand").appendChild(myCard);
+    }else if(Person == cpuHand){
+        document.getElementById("cpu_hand").appendChild(myCard); 
+    }
+    //myCard.addEventListener("click", function(){returnCard(this);});
     cardsDealt++;
+}
 
-}   
 function shuffle(){
     shuffledList = [];
+    playerHand = [];
+    cpuHand = [];
     tempList = cardDeck;
 	for (var i = 0; i < 52; i++)
 	{
 		var randomCard = getRandomInteger(0, (51 - i));
 		shuffledList.push(tempList[randomCard]);
-		tempList.slice(randomCard, 1);
+		tempList.splice(randomCard, 1);
     }
     cardDeck = shuffledList;
+
+    playerHand = shuffledList.splice(0, 26);
+    cpuHand = shuffledList;
 }
 
 function returnCard(placedCard){

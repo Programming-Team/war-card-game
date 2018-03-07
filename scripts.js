@@ -1,6 +1,27 @@
-function assignValue(){
-    if(card.value > 10){
-        card.value = 10;
-    }
+function initializeWar(){
+    PLAYER = 0;
+    CPU = 1;
+    NONE = 2;
+    playerCard = {};
+    cpuCard = {};
+    playerCount = playerHand.length;
+    cpuCount = cpuHand.length;
+    warStatus = false;
+    winStatus = NONE;
 }
-function dealHands
+
+function playWar() {
+
+}
+
+function compareCards() {
+
+}
+
+function determineWinner() {
+
+}
+
+function declareWar() {
+    
+}
