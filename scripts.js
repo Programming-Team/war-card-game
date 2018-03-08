@@ -6,6 +6,9 @@ function initializeWar(){
     playerCard = {};
     cpuCard = {};
 
+    playerWarCards = [];
+    cpuWarCards =[];
+
     playerHand = [];
     cpuHand = [];
 
@@ -23,39 +26,57 @@ function initializeWar(){
     cpuPoints = document.getElementById("cpu_points");
 
     splitDeck();
-
+    turn = 0;
 }
 
 function playWar() {
-  dealCard(playerHand);
-  dealCard(cpuHand);
-  determineCards();
+  dealRound(); 
+  determineWinner();
   display();
 }
+/*function setUpRound(){
+    if(turn == 0){
+        return;
+    }else{
+        document.getElementById("player_hand").removeChild(myCard);
+        document.getElementById("cpu_hand").removeChild(myCard);
+    }
+    
+    turn++;
+}*/
 
-function determineCards() {
+function dealRound() {	
+
+	
+}
+
+function determineWinner() {
   if(playerCard.value > cpuCard.value){
     winStatus = PLAYER;
+    playerHand.push(cpuCard);
+    playerWins++;
     warStatus = false;
   } else if(cpuCard.value > playerCard.value){
     winStatus = CPU;
+    cpuHand.push(playerCard);
+    cpuWins++;
     warStatus = false;
-  } else{
+  } else if(cpuCard.value == playerCard.value) {
     declareWar();
+    }
 }
-
 
 function declareWar() {
   warStatus = true;
 
-  dealCard(playerHand);
-  dealCard(playerHand);
-  dealCard(playerHand);
+  playerWarCards.push(dealCard(playerHand));
+  playerWarCards.push(dealCard(playerHand));
+  playerWarCards.push(dealCard(playerHand));
   playerWarCard = dealCard(playerHand);
 
-  dealCard(cpuHand);
-  dealCard(cpuHand);
-  dealCard(cpuHand);
+  cpuWarCards.push(dealCard(cpuHand));
+  cpuWarCards.push(dealCard(cpuHand));
+  cpuWarCards.push(dealCard(cpuHand));
   cpuWarCard = dealCard(cpuHand);
   declareWarWinner();
 }
@@ -63,9 +84,17 @@ function declareWar() {
 function declareWarWinner(){
   if(playerWarCard > cpuWarCard){
     winStatus = PLAYER;
+    playerHand = playerHand.concat(playerWarCards);
+    playerHand.push(playerWarCard);
+    playerHand = playerHand.concat(cpuWarCards);
+    playerHand.push(cpuWarCard);
     playerWins++;
   }else{
     winStatus = CPU;
+    cpuHand = cpuHand.concat(cpuWarCards);
+    cpuHand.push(cpuWarCard);
+    cpuHand = cpuHand.concat(playerWarCards);
+    cpuHand.push(playerWarCard);
     cpuWins++;
   }
   warStatus = false;
