@@ -5,11 +5,6 @@
 		<title>Card Game</title>
 		<script src = "cardData.js"></script>
 		<script src = "scripts.js"></script>
-		<script> 
-			function initialize(){
-				createDeck();
-			}
-		</script>
 		<style> 
 			body{
 				background-image: url("background.png");
@@ -20,9 +15,9 @@
 	<body onload = "initialize();">
 		<div id = "table">
 			<img onclick = "dealCard();" src = "cardimages/back-blue-75-3.png"/>
-			<button onclick = "dealHands();">New Game</button>
+			<button onclick = "dealHands();">New Round</button>
 			<div id = "playerHand"></div>
-			<div id = "cpHand"></div>
+			<div id = "cpuHand"></div>
 		</div>
 	
 	

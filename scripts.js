@@ -1,6 +1,14 @@
-function assignValue(){
-    if(card.value > 10){
-        card.value = 10;
+function initialize(){
+    createDeck();
+    splitDeck();
+}
+
+function dealHands(){
+    
+}
+function splitDeck(){
+    for(var i = 0;i < 26; i++){
+        dealCard("player");
+        dealCard("cpu");
     }
 }
-function dealHands

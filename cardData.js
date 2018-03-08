@@ -2,11 +2,11 @@ CLUBS = 0;
 DIAMONDS = 1;
 HEARTS = 2;
 SPADES = 3;
-cardsDealt = 0;
 
 
 function createDeck(){
     cardDeck = [];
+    dealtCards = [];
     
     for(var i = 0; i < 4; i++){
         for(var a = 1; a < 14; a++){
@@ -30,13 +30,18 @@ function createDeck(){
 }*/
 function dealCard(receiver){
     newCard = cardDeck.shift();
+    cardDeck.splice(newCard,1);
+    dealtCards.push(newCard);
     myCard = document.createElement("img");
     myCard.src = newCard.src;
     
-    document.getElementById("table").appendChild(myCard);
+    if(receiver == "player"){
+        document.getElementById("playerHand").appendChild(myCard);
+    }
+    else if (receiver == "cpu"){
+        document.getElementById("cpuHand").appendChild(myCard);
+    }
     myCard.addEventListener("click", function(){returnCard(this);});
-    cardsDealt++;
-
 }   
 function shuffle(){
     shuffledList = [];
@@ -53,7 +58,6 @@ function shuffle(){
 function returnCard(placedCard){
     document.getElementById("table").removeChild(placedCard);
     cardDeck.push(placedCard);
-    cardsDealt--;
 }
 
 function getRandomInteger(min, max) {
