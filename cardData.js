@@ -22,6 +22,7 @@ function createDeck(){
         }
     }
     shuffle();
+    
 }
 function splitDeck(){
     for(var i = 0; i < 26; i++){

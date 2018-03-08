@@ -8,6 +8,7 @@ function initializeWar(){
     cpuCount = cpuHand.length;
     warStatus = false;
     winStatus = NONE;
+<<<<<<< HEAD
 }
 
 function playWar() {
@@ -25,3 +26,22 @@ function determineWinner() {
 function declareWar() {
     
 }
+=======
+}
+
+function playWar() {
+
+}
+
+function compareCards() {
+
+}
+
+function determineWinner() {
+
+}
+
+function declareWar() {
+    
+}
+>>>>>>> beb44f439abe004c10018d90f034c597c569e785
