@@ -5,12 +5,13 @@ SPADES = 3;
 cardsDealt = 0;
 
 function initialize(){
+    createDeck();
     initializeWar();
-    splitDeck();
 }
+
 function createDeck(){
     cardDeck = [];
-    
+
     for(var i = 0; i < 4; i++){
         for(var a = 1; a < 14; a++){
             var card = {};
@@ -22,14 +23,8 @@ function createDeck(){
         }
     }
     shuffle();
-    
 }
-function splitDeck(){
-    for(var i = 0; i < 26; i++){
-        dealCard("player_hand");
-        dealCard("cpu_hand");
-    }
-}
+
 /*function display(){
     for(var i = 0; i < deck.length; i++){
         var myCard = document.createElement("img");
@@ -37,14 +32,14 @@ function splitDeck(){
         myDiv.appendChild(myCard);
     }
 }*/
-function dealCard(Person){
-    newCard = Person.shift();
+function dealCard(hand){
+    newCard = hand.shift();
     myCard = document.createElement("img");
     myCard.src = newCard.src;
-    if(Person == playerHand){
+    if(hand == playerHand){
         document.getElementById("player_hand").appendChild(myCard);
-    }else if(Person == cpuHand){
-        document.getElementById("cpu_hand").appendChild(myCard); 
+    }else if(hand == cpuHand){
+        document.getElementById("cpu_hand").appendChild(myCard);
     }
     //myCard.addEventListener("click", function(){returnCard(this);});
     cardsDealt++;
@@ -52,19 +47,14 @@ function dealCard(Person){
 
 function shuffle(){
     shuffledList = [];
-    playerHand = [];
-    cpuHand = [];
     tempList = cardDeck;
 	for (var i = 0; i < 52; i++)
 	{
 		var randomCard = getRandomInteger(0, (51 - i));
 		shuffledList.push(tempList[randomCard]);
 		tempList.splice(randomCard, 1);
-    }
+  }
     cardDeck = shuffledList;
-
-    playerHand = shuffledList.splice(0, 26);
-    cpuHand = shuffledList;
 }
 
 function returnCard(placedCard){
@@ -75,4 +65,4 @@ function returnCard(placedCard){
 
 function getRandomInteger(min, max) {
 	return Math.floor(Math.random() * (max-min + 1)) + min;
-} 
+}

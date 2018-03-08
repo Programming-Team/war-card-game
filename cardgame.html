@@ -14,12 +14,12 @@
 
 	<body onload = "initialize();">
 		<div id = "table">
-			<img onclick = "dealCard();" src = "cardimages/back-blue-75-3.png"/>
-			<button onclick = "dealHands();">New Round</button>
-			<div id = "playerHand"></div>
-			<div id = "cpuHand"></div>
+			<img onclick = "dealCard(playerHand);" src = "cardimages/back-blue-75-3.png"/>
+			<button onclick = "dealCard(cpuHand);">CPU</button>
+			<div id = "player_hand"></div>
+			<div id = "cpu_hand"></div>
 		</div>
-	
+
 
 	</body>
 
