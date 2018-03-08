@@ -1,14 +1,27 @@
-function initialize(){
-    createDeck();
-    splitDeck();
+function initializeWar(){
+    PLAYER = 0;
+    CPU = 1;
+    NONE = 2;
+    playerCard = {};
+    cpuCard = {};
+    playerCount = playerHand.length;
+    cpuCount = cpuHand.length;
+    warStatus = false;
+    winStatus = NONE;
 }
 
-function dealHands(){
-    
+function playWar() {
+
 }
-function splitDeck(){
-    for(var i = 0;i < 26; i++){
-        dealCard("player");
-        dealCard("cpu");
-    }
+
+function compareCards() {
+
+}
+
+function determineWinner() {
+
+}
+
+function declareWar() {
+    
 }
