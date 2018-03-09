@@ -25,23 +25,18 @@ function createDeck(){
     shuffle();
 }
 
-/*function display(){
-    for(var i = 0; i < deck.length; i++){
-        var myCard = document.createElement("img");
-        myCard.src = "cardimages/" + deck[i].cardImage;
-        myDiv.appendChild(myCard);
-    }
-}*/
 function dealCard(hand){
     newCard = hand.shift();
     myCard = document.createElement("img");
     myCard.src = newCard.src;
+    myCard.value = newCard.value;
     if(hand == playerHand){
         document.getElementById("player_hand").appendChild(myCard);
+        return newCard;
     }else if(hand == cpuHand){
         document.getElementById("cpu_hand").appendChild(myCard);
+        return newCard;
     }
-    //myCard.addEventListener("click", function(){returnCard(this);});
     cardsDealt++;
 }
 
@@ -55,12 +50,6 @@ function shuffle(){
 		tempList.splice(randomCard, 1);
   }
     cardDeck = shuffledList;
-}
-
-function returnCard(placedCard){
-    document.getElementById("table").removeChild(placedCard);
-    cardDeck.push(placedCard);
-    cardsDealt--;
 }
 
 function getRandomInteger(min, max) {

@@ -8,6 +8,9 @@
 		<style>
 			body{
 				background-image: url("background.png");
+				font-weight: bold;
+				font-size: 18px;
+				color: white;
 			}
 		</style>
 	</head>
@@ -15,9 +18,11 @@
 	<body onload = "initialize();">
 		<div id = "table">
 			<img onclick = "playWar();" src = "cardimages/back-blue-75-3.png"/>
-			<button onclick = "dealCard(cpuHand);">CPU</button>
 			<div id = "player_hand"></div>
 			<div id = "cpu_hand"></div>
+			<div>Winner: <span id = "the_winner"></span></div>
+			<div>Player Wins: <span id = "player_points">0</span></div>
+			<div>CPU Wins: <span id = "cpu_points">0</span></div>
 		</div>
 
 

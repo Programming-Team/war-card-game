@@ -30,9 +30,10 @@ function initializeWar(){
 }
 
 function playWar() {
-  dealRound(); 
+  dealRound();
   determineWinner();
   display();
+  alert(playerWins);
 }
 /*function setUpRound(){
     if(turn == 0){
@@ -41,42 +42,45 @@ function playWar() {
         document.getElementById("player_hand").removeChild(myCard);
         document.getElementById("cpu_hand").removeChild(myCard);
     }
-    
+
     turn++;
 }*/
 
-function dealRound() {	
+function dealRound() {
 
-	
+  playerCard = dealCard(playerHand);
+  cpuCard = dealCard(cpuHand);
 }
 
 function determineWinner() {
-  if(playerCard.value > cpuCard.value){
-    winStatus = PLAYER;
-    playerHand.push(cpuCard);
-    playerWins++;
-    warStatus = false;
-  } else if(cpuCard.value > playerCard.value){
-    winStatus = CPU;
-    cpuHand.push(playerCard);
-    cpuWins++;
-    warStatus = false;
-  } else if(cpuCard.value == playerCard.value) {
-    declareWar();
-    }
+    if(playerCard.value > cpuCard.value){
+      winStatus = PLAYER;
+      playerHand.push(cpuCard);
+      playerHand.push(playerCard);
+      playerWins++;
+    } else if(cpuCard.value > playerCard.value){
+      winStatus = CPU;
+      cpuHand.push(playerCard);
+      cpuHand.push(cpuCard);
+      cpuWins++;
+    } else if(cpuCard.value == playerCard.value) {
+      declareWar();
+      }
 }
 
 function declareWar() {
   warStatus = true;
+  for(var i = 0; i < 4; i++) {
+    tempPlayer = dealCard(playerHand);
+    tempPlayerWar = document.createElement("img");
+    tempPlayerWar.src = tempPlayer.back;
 
-  playerWarCards.push(dealCard(playerHand));
-  playerWarCards.push(dealCard(playerHand));
-  playerWarCards.push(dealCard(playerHand));
+    tempCpu = dealCard(cpuHand);
+    tempCpuWar = document.createElement("img");
+    tempCpuWar.src = tempCpu.back;
+  }
+
   playerWarCard = dealCard(playerHand);
-
-  cpuWarCards.push(dealCard(cpuHand));
-  cpuWarCards.push(dealCard(cpuHand));
-  cpuWarCards.push(dealCard(cpuHand));
   cpuWarCard = dealCard(cpuHand);
   declareWarWinner();
 }
@@ -106,8 +110,8 @@ function splitDeck(){
 }
 
 function display() {
-  playerCount = playerhand.length;
-  cpuCount = playerHand.length;
+  playerCount = playerHand.length;
+  cpuCount = cpuHand.length;
 
   if(winStatus == PLAYER) {
     theWinner.innerHTML = "Player";
